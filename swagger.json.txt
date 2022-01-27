@@ -1,0 +1,577 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.",
+    "version": "1.0.6",
+    "title": "Swagger Petstore",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": { "email": "apiteam@swagger.io" },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "truckstop.localhost/truckstop",
+  "basePath": "/WS",
+  "tags": [
+    {
+      "name": "pickup",
+      "description": "Everything about your pickups",
+      "externalDocs": {
+       
+      }
+    },
+    {
+      "name": "Driver Side",
+      "description": "Everything about the driver side api",
+      "externalDocs": {
+       
+      }
+    }
+  ],
+  "schemes": ["https", "http"],
+  "paths": {
+    "/pickup": {
+      "post": {
+        "tags": ["pickup"],
+        "summary": "Create Pickup API",
+        "description": "To create pickup request ",
+        "operationId": "uploadFile",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "vehicle_type_id",
+            "in": "path",
+            "description": "Vehicle type id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "first_name",
+            "in": "path",
+            "description": "First Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "last_name",
+            "in": "path",
+            "description": "Last Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mobile_number",
+            "in": "path",
+            "description": "Mobile number",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pickup_location",
+            "in": "path",
+            "description": "Pickup location",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Order" }
+          },
+          {
+            "name": "pickup_image",
+            "in": "formData",
+            "description": "Upload pickup images",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "pickup_invoice",
+            "in": "formData",
+            "description": "Upload pickup invoice file",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "note",
+            "in": "path",
+            "description": "Note",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/ApiResponse" }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/review_rate": {
+      "post": {
+        "tags": ["pickup"],
+        "summary": "Create Pickup API",
+        "description": "To create pickup request ",
+        "operationId": "uploadFile",
+       
+        "parameters": [
+          {
+            "name": "delivery_id",
+            "in": "path",
+            "description": "delivery_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "driver_id",
+            "in": "path",
+            "description": "driver_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "rating",
+            "in": "path",
+            "description": "rating",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "review",
+            "in": "path",
+            "description": "review",
+            "required": false,
+            "type": "string"
+          }  
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/ApiResponse" }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/reviews": {
+      "get": {
+        "tags": ["pickup"],
+        "summary": "Review rate lists",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "driver_id",
+            "in": "query",
+            "description": "ID of driver that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "format": "int32" }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/driver_profile": {
+      "get": {
+        "tags": ["pickup"],
+        "summary": "Review rate lists",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "driver_id",
+            "in": "query",
+            "description": "ID of driver that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "format": "int32" }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/deliveries_status": {
+      "get": {
+        "tags": ["pickup"],
+        "summary": "Review rate lists",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "delivery_id",
+            "in": "query",
+            "description": "ID of delivery_id that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "format": "int32" }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/pickup_details": {
+      "get": {
+        "tags": ["pickup"],
+        "summary": "pickup_details",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "delivery_id",
+            "in": "query",
+            "description": "ID of delivery_id that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "format": "int32" }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/report_driver": {
+      "post": {
+        "tags": ["pickup"],
+        "summary": "Create Pickup API",
+        "description": "To create pickup request ",
+        "operationId": "uploadFile",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+       
+        "parameters": [
+          {
+            "name": "driver_id",
+            "in": "path",
+            "description": "ID of driver that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "message",
+            "in": "path",
+            "description": "message",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "reason_id",
+            "in": "path",
+            "description": "reason_id",
+            "required": true,
+            "type": "string"
+          }  
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/ApiResponse" }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/review_rate/": {
+      "post": {
+        "tags": ["pickup"],
+        "summary": "Create Pickup API",
+        "description": "To create pickup request ",
+        "operationId": "uploadFile",
+       
+        "parameters": [
+          {
+            "name": "delivery_id",
+            "in": "path",
+            "description": "ID of delivery_id that needs to be fetched",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "driver_id",
+            "in": "path",
+            "description": "message",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "rating",
+            "in": "path",
+            "description": "rating",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "review",
+            "in": "path",
+            "description": "review",
+            "required": false,
+            "type": "string"
+          }   
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/ApiResponse" }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/get_user_profile": {
+      "get": {
+        "tags": ["Driver Side"],
+        "summary": "To get_user_profile",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": ["application/json"],
+        "parameters": [
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "format": "int32" }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/vehicle_type": {
+      "get": {
+        "tags": ["Driver Side"],
+        "summary": "To get vehicle_type",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": ["application/json"],
+        "parameters": [
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "format": "int32" }
+            }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    
+    "/driver": {
+      "post": {
+        "tags": ["Driver Side"],
+        "summary": "Create Pickup API",
+        "description": "To create pickup request ",
+        "operationId": "uploadFile",
+       
+        "parameters": [
+          {
+            "name": "license_no",
+            "in": "path",
+            "description": "license_no",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "license_expiry_date",
+            "in": "path",
+            "description": "license_expiry_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "licence_image[]",
+            "in": "path",
+            "description": "licence_image[]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "profile_summary",
+            "in": "path",
+            "description": "profile_summary",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "image_1",
+            "in": "path",
+            "description": "image_1",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "image_2",
+            "in": "path",
+            "description": "image_2",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "images_count",
+            "in": "path",
+            "description":"images_count",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/ApiResponse" }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    },
+    "/vehicle": {
+      "post": {
+        "tags": ["Driver Side"],
+        "summary": "vehicle API",
+        "description": "To create pickup request ",
+        "operationId": "uploadFile",
+       
+        "parameters": [
+          {
+            "name": "vehicle_type_id",
+            "in": "path",
+            "description": "vehicle_type_id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "make",
+            "in": "path",
+            "description": "make",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vehicle_model",
+            "in": "path",
+            "description": "vehicle_model",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "profile_summary",
+            "in": "path",
+            "description": "profile_summary",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "image_1",
+            "in": "path",
+            "description": "image_1",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "image_2",
+            "in": "path",
+            "description": "image_2",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "images_count",
+            "in": "path",
+            "description":"images_count",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/ApiResponse" }
+          }
+        },
+        "security": [{ "api_key": [] }]
+      }
+    }
+
+  },
+  "securityDefinitions": {
+    "api_key": { "type": "apiKey", "name": "AUTHTOKEN", "in": "header" }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "integer", "format": "int32" },
+        "type": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    }
+  },
+ 
+ 
+    
+
+  
+
+ "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

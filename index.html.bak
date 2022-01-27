@@ -230,3 +230,138 @@ C:\xampp\htdocs\Appineers_V4_Web\Appineers_V4
 
 
 http://54.80.150.240/Appineers_V4_Web/Appineers_V4/WS/          : whitelabel
+
+http://Appineers_V4_Web/Appineers_V4/WS/ 
+
+print_r or die();
+
+
+http://54.80.150.240/Appineers_V4_Web/Appineers_V4/WS/ 
+
+
+
+echo"HI";die;
+
+
+
+execution flow 
+
+1: route
+2: wscontroller
+
+
+
+
+
+vhosts file
+
+<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\Appineers_V4_Web\Appineers_V4"
+    ServerName Appineers_V4.localhost
+<Directory "C:\xampp\htdocs\Appineers_V4_Web\Appineers_V4">
+</Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\Demo_Web\Demo"
+    ServerName Demo.localhost
+<Directory "C:\xampp\htdocs\Demo_Web\Demo">
+</Directory>
+</VirtualHost>
+
+C:\xampp\htdocs\TruckStop_Web\truckstop
+
+hosts file
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+
+127.0.0.1 Appineers_V4.local
+127.0.0.1 Demo.localhost
+
+
+C:\xampp\htdocs\Demo_Web\Demo
+
+
+
+
+ $this->db->select("*");
+            $this->db->from("posts");
+            $query = $this->db->get();
+
+           print_r($query->result());die();
+           // print_r("$result_arr");die
+		   
+		   
+		   
+		   //print_r($this->input->post());die;
+		   
+		   
+		   echo $this->db->last_query();
+		   
+		   
+		   p.post_id or posted_id   confusion p.post_id correct 
+		   
+		   
+		   dev 18.211.58.235 \
+		   
+		   ec2-user 
+		   
+		    "first_name":"",
+                   "last_name" : "",
+                   "phone": "",
+                   "email": "",
+                   "address": "",
+                   "city": "",
+                   "state_name": "",
+                    "zip_code": "",
+                    "post_type": "",
+                    "status": "",
+                    "description": "",
+                    "image_1":"",
+                    "image_2":"",
+                    "image_3":"",
+                    "image_4": "",
+                    "image_5": "",
+					
+	<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\TruckStop_Web"
+    ServerName truckstop.localhost
+<Directory "C:\xampp\htdocs\TruckStop_Web">
+</Directory>
+</VirtualHost>			
+
+18.211.58.235/TruckStop_Web/truckstop
+
+http://truckstop.localhost/truckstop/WS
+
+<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\Appineers_V4_Web\Appineers_V4"
+    ServerName Appineers_V4.localhost
+<Directory "C:\xampp\htdocs\Appineers_V4_Web\Appineers_V4">
+</Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\Demo_Web\Demo"
+    ServerName Demo.localhost
+<Directory "C:\xampp\htdocs\Demo_Web\Demo">
+</Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot "C:\xampp\htdocs\TruckStop_Web"
+    ServerName truckstop.localhost
+<Directory "C:\xampp\htdocs\TruckStop_Web">
+</Directory>
+</VirtualHost>
+
+
+#	127.0.0.1       localhost
+#	::1             localhost
+
+127.0.0.1 Appineers_V4.local
+127.0.0.1 Demo.localhost
+			truckstop.localhost
